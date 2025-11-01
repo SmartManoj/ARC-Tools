@@ -1,19 +1,15 @@
-
-[tool.poetry]
+[project]
 name = "arc_tools"
 version = "0.1.0"
 description = "Tools for the ARC dataset"
-authors = ["மனோஜ்குமார் பழனிச்சாமி"]
-packages = [
-  { include = "arc_tools" },
+authors = [
+  {name = "மனோஜ்குமார் பழனிச்சாமி"}
 ]
-
-[tool.poetry.dependencies]
-python = "^3.10"
+requires-python = ">=3.10"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
 include = ["arc_tools*"]
