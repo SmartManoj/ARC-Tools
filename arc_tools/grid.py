@@ -502,18 +502,19 @@ class Grid(SafeList):
         return [top_left, top_right, bottom_left, bottom_right]
     
     def compare(self, other, silent=False):
+        """ self is Actual, other is Expected """
         if len(self) != len(other):
             if not silent:
-                logger.info(f"Row length mismatch: Expected: {len(self)}, Actual: {len(other)}")
+                logger.info(f"Row length mismatch: Expected: {len(other)}, Actual: {len(self)}")
             return False
         for i in range(len(self)):
             if self[i] != other[i]:
                 if len(self[i]) != len(other[i]):
-                    logger.info(f"Column length mismatch for row {i+1}: Expected: {len(self[i])}, Actual: {len(other[i])}")
+                    logger.info(f"Column length mismatch for row {i+1}: Expected: {len(other[i])}, Actual: {len(self[i])}")
                     return False
                 for j in range(len(self[i])):
                     if self[i][j] != other[i][j]:
-                        logger.info(f"Mismatch at index row {i}, col {j}: Expected: {self[i][j]}, Actual: {other[i][j]}")
+                        logger.info(f"Mismatch at index row {i}, col {j}: Expected: {other[i][j]}, Actual: {self[i][j]}")
                         return False
         return True
     
