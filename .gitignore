@@ -7,3 +7,4 @@
 *.json
 .env
 .DS_Store
+prompt.txt
