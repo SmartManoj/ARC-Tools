@@ -42,3 +42,6 @@ agent = Agent(
 conversation = Conversation(agent=agent, workspace=".", persistence_dir=".conversations")
 conversation.send_message(open('prompt.txt').read())
 conversation.run()
+if not os.environ.get('IS_AGENT_TERMINAL') == '1':
+    from pymsgbox import alert
+    alert('ARC Task completed')
