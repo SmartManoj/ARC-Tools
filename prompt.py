@@ -57,7 +57,9 @@ import json
 path=r'C:\Users\smart\Desktop\arc-prize-2024\arc-agi_evaluation_challenges.json'
 with open(path, 'r') as file:
     test_data = json.load(file)
-for task_id, data in list(test_data.items())[:120]:
+
+task_number = int(open('task_number.txt').read())
+for task_id, data in list(test_data.items())[task_number-1:task_number]:
     print(task_id)
     with open(f'{WORKSPACE_DIR}/data.json', 'w') as file:
         json.dump(data, file)
