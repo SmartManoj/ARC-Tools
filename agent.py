@@ -18,7 +18,7 @@ else:
     base_url = 'http://localhost:8000/v1/'
     max_input_tokens=48_000
     max_output_tokens=16_000
-llm = LLM(model=model, base_url=base_url, max_input_tokens=max_input_tokens, max_output_tokens=max_output_tokens, seed=42)
+llm = LLM(model=model, base_url=base_url, max_input_tokens=max_input_tokens, max_output_tokens=max_output_tokens, seed=42, log_completions=1)
 
 # Register tools
 register_tool("TerminalTool", TerminalTool)
