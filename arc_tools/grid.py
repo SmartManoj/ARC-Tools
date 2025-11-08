@@ -510,11 +510,13 @@ class Grid(SafeList):
         for i in range(len(self)):
             if self[i] != other[i]:
                 if len(self[i]) != len(other[i]):
-                    logger.info(f"Column length mismatch for row {i+1}: Expected: {len(other[i])}, Actual: {len(self[i])}")
+                    if not silent:
+                        logger.info(f"Column length mismatch for row {i+1}: Expected: {len(other[i])}, Actual: {len(self[i])}")
                     return False
                 for j in range(len(self[i])):
                     if self[i][j] != other[i][j]:
-                        logger.info(f"Mismatch at index row {i}, col {j}: Expected: {other[i][j]}, Actual: {self[i][j]}")
+                        if not silent:
+                            logger.info(f"Mismatch at index row {i}, col {j}: Expected: {other[i][j]}, Actual: {self[i][j]}")
                         return False
         return True
     
