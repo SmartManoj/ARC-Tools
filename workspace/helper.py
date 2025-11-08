@@ -13,7 +13,7 @@ def solve_task(task_fn):
         output = task_fn(grid)
         expected_output = Grid(task['output'])
         if not output.compare(expected_output):
-            print(f"Train Task {task_idx} failed")
+            logger.info(f"Train Task {task_idx} failed")
             debug_output(grid, expected_output, output)
             break
         logger.info(f"Train Task {task_idx} passed")
