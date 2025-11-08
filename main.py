@@ -3,8 +3,7 @@ from arc_tools.logger import logger
 import os
 import json
 from arc_tools.grid import Grid
-from arc_tools.plot import plot_grids
-
+from arc_tools.utils import debug_output
 from train_tasks import *
 from evaluation_tasks.tasks import *
 show_count = 0
@@ -55,20 +54,6 @@ jigsaw_task_fns = [
     row_col_color_data, # can occur in normal task
 ]
 
-
-DEBUG_OUTPUT = 1
-def debug_output(grid, expected_output, output, window_title='result'):
-    if grid.compare(output, silent=True):
-        logger.info(f"Output is still the same as the input - No changes, idiot.")
-        exit(1)
-    if not DEBUG_OUTPUT:
-        return
-    # print which cells are different
-    for row in range(len(expected_output)):
-        for col in range(len(expected_output[0])):
-            if (expected_value := expected_output[row][col]) != (actual_value := output[row][col]):
-                logger.info(f"At {row =}, {col = }, {expected_value = } != {actual_value = }")
-    plot_grids([grid, expected_output, output], show=1, titles=["Input", "Expected output", "Actual output"], name=window_title)
 
 def find_task(grids, expected_outputs, start_train_task_id=1):
     if len(grids[0][0]) == len(expected_outputs[0][0]):
