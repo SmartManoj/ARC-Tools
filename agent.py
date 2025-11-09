@@ -6,6 +6,8 @@ from openhands.tools.terminal import TerminalTool
 from openhands.tools.file_editor import FileEditorTool
 from openhands.tools.task_tracker import TaskTrackerTool
 from openhands.tools.preset.default import get_default_condenser
+
+os.environ['IS_AGENT_TERMINAL'] = '1'
 # Configure LLM
 is_cloud=1
 if is_cloud:
