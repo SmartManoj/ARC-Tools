@@ -4,7 +4,8 @@ from itertools import product
 import json
 import numpy as np
 from copy import deepcopy
-from typing import Optional, override
+from typing import Optional
+from typing_extensions import override
 
 from arc_tools.constants import CARDINAL_DIRECTIONS, EIGHT_DIRECTIONS
 from arc_tools.logger import logger
