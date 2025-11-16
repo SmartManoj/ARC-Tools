@@ -23,7 +23,6 @@ def solve(grid: Grid):
 
     # Find all rectangles by detecting their boundaries
     rectangles = find_rectangles(grid, height, width)
-    logger.info(f"Found {len(rectangles)} rectangles: {rectangles}")
 
     # Process each rectangle
     for rect in rectangles:
