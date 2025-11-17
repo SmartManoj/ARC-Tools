@@ -6,11 +6,16 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    add the function description first.
+    Vertically reflect the bottom pattern to the top half of the grid.
     '''
-    objects = detect_objects(grid)
-
-    return grid
+    result = grid.copy()
+    width, height = grid.shape
+    
+    for row in range(height // 2):
+        for col in range(width):
+            result[row][col] = grid[height - 1 - row][col]
+    
+    return result
 
 if __name__ == "__main__":
     os.environ['initial_file'] = os.path.splitext(os.path.basename(__file__))[0]

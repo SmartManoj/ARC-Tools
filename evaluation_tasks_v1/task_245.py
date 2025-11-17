@@ -6,11 +6,27 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    add the function description first.
+    Draw red (2) cross patterns around each green (3) pixel.
     '''
-    objects = detect_objects(grid)
-
-    return grid
+    result = grid.copy()
+    width, height = grid.shape
+    
+    green_pixels = []
+    for row in range(height):
+        for col in range(width):
+            if grid[row][col] == 3:
+                green_pixels.append((row, col))
+    
+    for row, col in green_pixels:
+        # Draw vertical and horizontal lines
+        for dr in range(-2, 3):
+            if 0 <= row + dr < height and grid[row + dr][col] == 0:
+                result[row + dr][col] = 2
+        for dc in range(-2, 3):
+            if 0 <= col + dc < width and grid[row][col + dc] == 0:
+                result[row][col + dc] = 2
+    
+    return result
 
 if __name__ == "__main__":
     os.environ['initial_file'] = os.path.splitext(os.path.basename(__file__))[0]
