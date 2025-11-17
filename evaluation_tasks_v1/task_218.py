@@ -6,7 +6,7 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    add the function description first.
+    TODO: Pattern analysis needed. Requires detailed investigation of training examples.
     '''
     objects = detect_objects(grid)
 
