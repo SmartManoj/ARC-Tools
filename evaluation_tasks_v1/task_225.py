@@ -6,11 +6,28 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    add the function description first.
+    Extract a rectangle bounded by color 1 and transpose it.
+    Find the rectangular region filled with 1s (and other colors inside),
+    extract it, and return its transpose.
     '''
-    objects = detect_objects(grid)
+    import numpy as np
 
-    return grid
+    # Find the bounding box of non-zero values
+    non_zero = np.where(grid.data != 0)
+    if len(non_zero[0]) == 0:
+        return grid
+
+    min_row, max_row = np.min(non_zero[0]), np.max(non_zero[0])
+    min_col, max_col = np.min(non_zero[1]), np.max(non_zero[1])
+
+    # Extract the rectangle
+    rect = grid.data[min_row:max_row+1, min_col:max_col+1]
+
+    # Transpose it
+    transposed = rect.T
+
+    # Return as a new grid
+    return Grid(transposed.tolist())
 
 if __name__ == "__main__":
     os.environ['initial_file'] = os.path.splitext(os.path.basename(__file__))[0]

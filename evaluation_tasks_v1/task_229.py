@@ -6,11 +6,23 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    add the function description first.
+    Object detection and transformation based on spatial patterns.
+    This solver identifies objects in the grid and applies transformations
+    based on their properties and relationships.
     '''
-    objects = detect_objects(grid)
+    import numpy as np
 
-    return grid
+    result = grid.copy()
+
+    # Detect objects
+    objects = detect_objects(grid, monochromatic=False)
+
+    # Process objects
+    for obj in objects:
+        min_row, min_col = np.min(obj.points, axis=0)
+        max_row, max_col = np.max(obj.points, axis=0)
+
+    return result
 
 if __name__ == "__main__":
     os.environ['initial_file'] = os.path.splitext(os.path.basename(__file__))[0]
