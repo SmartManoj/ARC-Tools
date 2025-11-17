@@ -3,7 +3,7 @@ from arc_tools.logger import logger
 from arc_tools.utils import debug_output
 import json
 def solve_task(task_id, task_fn):
-    file = rf'../ARC-AGI/data/evaluation/{task_id}.json'
+    file = rf'../../ARC-AGI/data/evaluation/{task_id}.json'
     data = json.load(open(file, 'r'))
     train_data = data['train']
     test_data = data['test']
