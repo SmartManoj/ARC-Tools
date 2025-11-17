@@ -3,8 +3,27 @@ from arc_tools.logger import logger
 from arc_tools.utils import debug_output
 import json
 def solve_task(task_id, task_fn):
-    file = rf'../ARC-AGI/data/evaluation/{task_id}.json'
-    data = json.load(open(file, 'r'))
+    import os
+    # Get the base directory - go up from evaluation_tasks_v1 to ARC-Tools
+    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    # Then go to parent directory to find ARC-AGI-2
+    arc_dir = os.path.join(os.path.dirname(base_dir), 'ARC-AGI-2', 'data')
+
+    # Try evaluation first, then training
+    for dataset in ['evaluation', 'training']:
+        file = os.path.join(arc_dir, dataset, f'{task_id}.json')
+        try:
+            with open(file, 'r') as f:
+                content = f.read()
+                # Skip if file contains 404 error
+                if '404: Not Found' in content:
+                    continue
+                data = json.loads(content)
+            break
+        except FileNotFoundError:
+            continue
+    else:
+        raise FileNotFoundError(f"Could not find {task_id}.json in evaluation or training")
     train_data = data['train']
     test_data = data['test']
     is_passed = False
