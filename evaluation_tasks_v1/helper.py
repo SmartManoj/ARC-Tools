@@ -23,9 +23,7 @@ def solve_task(task_id, task_fn):
         outputs = []
         for task_idx, task in enumerate(test_data, 1):
             output = task_fn(Grid(task['input']))
-            # Convert Grid to list for JSON serialization
-            output_list = [[int(cell) for cell in row] for row in output]
-            outputs.append({"attempt_1": output_list, "attempt_2": output_list})
+            outputs.append({"attempt_1": output, "attempt_2": output})
             logger.info(f"Test Task {task_idx} output successfully generated")
         with open('output.json', 'w') as file:
             json.dump(outputs, file)
