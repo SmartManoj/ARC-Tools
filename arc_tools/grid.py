@@ -5,12 +5,7 @@ import json
 import numpy as np
 from copy import deepcopy
 from typing import Optional
-try:
-    from typing import override
-except ImportError:
-    # Python < 3.12
-    def override(func):
-        return func
+from typing_extensions import override
 
 from arc_tools.constants import CARDINAL_DIRECTIONS, EIGHT_DIRECTIONS
 from arc_tools.logger import logger
