@@ -6,7 +6,7 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    Transform specific color based on connectivity
+    Pattern transformation
     '''
     # TODO: Implement transformation logic
     return grid

@@ -6,7 +6,7 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    Extract or transform pattern
+    Pattern transformation
     '''
     # TODO: Implement transformation logic
     return grid

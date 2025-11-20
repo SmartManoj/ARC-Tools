@@ -6,10 +6,9 @@ from helper import solve_task
 
 def solve(grid: Grid):
     '''
-    add the function description first.
+    Pattern transformation
     '''
-    objects = detect_objects(grid)
-
+    # TODO: Implement transformation logic
     return grid
 
 if __name__ == "__main__":
