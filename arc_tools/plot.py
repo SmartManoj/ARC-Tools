@@ -2,7 +2,10 @@ from matplotlib.backend_bases import MouseButton
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import numpy as np
-import pyperclip
+try:
+    import pyperclip
+except ImportError:
+    pyperclip = None
 from arc_tools.logger import logger
 from glob import glob
 import os
@@ -150,7 +153,8 @@ def plot_grids(grids, name=None, show=1, save_all=False, titles=None):
                 col = int(event.xdata + 0.5)
                 row = int(event.ydata + 0.5)
                 copy_msg = f'(row,col) = ({row},{col})'
-                pyperclip.copy(copy_msg)
+                if pyperclip:
+                    pyperclip.copy(copy_msg)
     plt.connect('button_press_event', on_click)
     if show and not disable_show and not is_agent_terminal:
         plt.show(block=1)
